@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class excelReading {
+public class ExcelReading {
 
-    public static final String EXCEL_FILENAMEW = "bookList.xls";
-    public static final int SHEET_INDEX = 0;
+    private static final String EXCEL_FILENAMEW = "bookList.xls";
+    private static final int SHEET_INDEX = 0;
 
     public static void main(String[] args) {
 

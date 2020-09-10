@@ -9,15 +9,15 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 
 public class InputImageInSheet {
-    public static final String SHEETNAME = "My Sample Excel";
-    public static final String PICTURE = "pic.jpg";
-    public static final String CREATE_FILENAME = "myFile.xls";
-    public static final int SHEET_WIDTH = 20 * 256;
-    public static final short CELL_HEIGHT = 120 * 20;
-    public static final int CREATE_SHEET_ROWNUM = 2;
-    public static final int CREATE_SHEET_COLUMN = 1;
-    public static final int COLUMN_INDEX = 1;
-    public static final String CREATE_IMAGE_OK = "이미지 생성 성공";
+    private static final String SHEETNAME = "My Sample Excel";
+    private static final String PICTURE = "pic.jpg";
+    private static final String CREATE_FILENAME = "myFile.xls";
+    private static final int SHEET_WIDTH = 20 * 256;
+    private static final short CELL_HEIGHT = 120 * 20;
+    private static final int CREATE_SHEET_ROWNUM = 2;
+    private static final int CREATE_SHEET_COLUMN = 1;
+    private static final int COLUMN_INDEX = 1;
+    private static final String CREATE_IMAGE_OK = "이미지 생성 성공";
 
     public static void main(String[] args) {
 
@@ -52,7 +52,7 @@ public class InputImageInSheet {
             System.out.println(CREATE_IMAGE_OK);
 
         }catch (Exception e){
-            e.getMessage();
+            System.out.println("Exception e " + e.getMessage());
         }
     }
 }

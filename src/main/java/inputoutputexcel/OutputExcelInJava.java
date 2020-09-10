@@ -1,6 +1,5 @@
 package inputoutputexcel;
 
-import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -11,18 +10,19 @@ import java.io.FileInputStream;
 import java.util.Iterator;
 
 public class OutputExcelInJava {
-    public static final String EXCEL_FILENAME = "cellDataType.xls";
-    public static final String BRACKET = "[";
-    public static final String COMMA = ",";
-    public static final String STRING_VALUE = "] = STRING; Value=";
-    public static final String NUMERIC_VALUE = "] = NUMERIC; Value=";
-    public static final String BOOLEAN_VALUE = "] = BOOLEAN; Value=";
-    public static final String BLANK_CELL = "] = BLANK CELL";
+
+    private static final String EXCEL_FILENAME = "cellDataType.xls";
+    private static final String BRACKET = "[";
+    private static final String COMMA = ",";
+    private static final String STRING_VALUE = "] = STRING; Value=";
+    private static final String NUMERIC_VALUE = "] = NUMERIC; Value=";
+    private static final String BOOLEAN_VALUE = "] = BOOLEAN; Value=";
+    private static final String BLANK_CELL = "] = BLANK CELL";
 
     public static void main(String[] args) {
 
-        try (FileInputStream fis = new FileInputStream(EXCEL_FILENAME)) {
-            HSSFWorkbook workbook = new HSSFWorkbook(fis);
+        try (FileInputStream fileInputStream = new FileInputStream(EXCEL_FILENAME)) {
+            HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
             HSSFSheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rows = sheet.rowIterator();
 
@@ -51,7 +51,7 @@ public class OutputExcelInJava {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Exception e " + e.getMessage());
         }
     }
 }
