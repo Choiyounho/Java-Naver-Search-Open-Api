@@ -8,12 +8,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+import static utils.CommonsConstant.*;
+
 public class InputImageInSheet {
+
     private static final String SHEETNAME = "My Sample Excel";
     private static final String PICTURE = "pic.jpg";
     private static final String CREATE_FILENAME = "myFile.xls";
-    private static final int SHEET_WIDTH = 20 * 256;
-    private static final short CELL_HEIGHT = 120 * 20;
     private static final int CREATE_SHEET_ROWNUM = 2;
     private static final int CREATE_SHEET_COLUMN = 1;
     private static final int COLUMN_INDEX = 1;

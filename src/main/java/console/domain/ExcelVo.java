@@ -1,12 +1,12 @@
 package console.domain;
 
 public class ExcelVo {
+
     private String title;
     private String author;
     private String company;
     private String isbn;
     private String imageurl;
-
 
     public ExcelVo(String title, String author, String company, String isbn, String imgurl) {
         super();
@@ -31,11 +31,9 @@ public class ExcelVo {
         return title;
     }
 
-
     public String getCompany() {
         return company;
     }
-
 
     public String getIsbn() {
         return isbn;
