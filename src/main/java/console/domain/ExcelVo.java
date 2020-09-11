@@ -6,15 +6,15 @@ public class ExcelVo {
     private String author;
     private String company;
     private String isbn;
-    private String imageurl;
+    private String imageUrl;
 
-    public ExcelVo(String title, String author, String company, String isbn, String imgurl) {
+    public ExcelVo(String title, String author, String company, String isbn, String imageUrl) {
         super();
         this.title = title;
         this.author = author;
         this.company = company;
         this.isbn = isbn;
-        this.imageurl = imgurl;
+        this.imageUrl = imageUrl;
     }
 
     public ExcelVo(String title, String author, String company) {
@@ -43,12 +43,12 @@ public class ExcelVo {
         this.isbn = isbn;
     }
 
-    public String getImageurl() {
-        return imageurl;
+    public String getImageUrl() {
+        return "results/" + imageUrl;
     }
 
-    public void setImageurl(String imageurl) {
-        this.imageurl = imageurl;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 
@@ -59,7 +59,7 @@ public class ExcelVo {
                 ", author='" + author + '\'' +
                 ", company='" + company + '\'' +
                 ", isbn='" + isbn + '\'' +
-                ", imageurl='" + imageurl + '\'' +
+                ", imageurl='" + imageUrl + '\'' +
                 '}';
     }
 }

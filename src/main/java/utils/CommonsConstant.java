@@ -35,5 +35,5 @@ public class CommonsConstant {
     public static final String AUTHOR = "책저자";
     public static final String COMPANY = "출판사";
     public static final String IMAGE = "이미지";
-    
+
 }
