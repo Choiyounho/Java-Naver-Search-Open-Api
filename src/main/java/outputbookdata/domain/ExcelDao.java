@@ -69,8 +69,8 @@ public class ExcelDao {
                 cellCompany.setCellValue(new HSSFRichTextString(company));
                 rowNum++;
 
-                ExcelVo vo = new ExcelVo(title, author, company);
-                ExcelVo data = naverSearch(vo);
+                ExcelVo search = ExcelVo.search(title, author, company);
+                ExcelVo data = naverSearch(search);
                 list.add(data);
                 System.out.println("★대문자로 입력해주세요★");
                 System.out.println("계속입력 하시려면 Y / 입력종료 N" + COLON);

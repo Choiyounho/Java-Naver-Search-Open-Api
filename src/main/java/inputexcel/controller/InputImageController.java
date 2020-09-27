@@ -1,6 +1,6 @@
 package inputexcel.controller;
 
-import inputexcel.domain.ExcelFileManagement;
+import inputexcel.domain.PoiApi;
 import inputexcel.view.OutputView;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -26,11 +26,11 @@ public class InputImageController {
             Workbook workbook = new HSSFWorkbook();
             Sheet sheet = workbook.createSheet(SHEETNAME);
 
-            int pictureIndex = ExcelFileManagement.createImageFile(workbook);
+            int pictureIndex = PoiApi.createImageFile(workbook);
 
-            ClientAnchor anchor = ExcelFileManagement.anchorCell(workbook);
+            ClientAnchor anchor = PoiApi.anchorCell(workbook);
 
-            ExcelFileManagement.createPicture(sheet, pictureIndex, anchor);
+            PoiApi.createPicture(sheet, pictureIndex, anchor);
 
             Cell cell = sheet.createRow(CREATED_SHEET_ROW_NUM)
                     .createCell(CREATED_SHEET_COLUMN_NUM);
@@ -39,7 +39,7 @@ public class InputImageController {
 
             cell.getRow().setHeight(CELL_HEIGHT);
 
-            FileOutputStream fileOutputStream = ExcelFileManagement.excelOutputImage(workbook);
+            FileOutputStream fileOutputStream = PoiApi.excelOutputImage(workbook);
 
             OutputView.response(fileOutputStream);
         } catch (IOException e) {

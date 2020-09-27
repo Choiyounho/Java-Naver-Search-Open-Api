@@ -10,7 +10,7 @@ import java.io.InputStream;
 
 import static utils.CommonsConstant.ROOT_DIRECTORY;
 
-public class ExcelFileManagement {
+public class PoiApi {
 
     private static final String IMAGE_FILE = ROOT_DIRECTORY + "pic.jpg";
     private static final String CREATED_FILENAME = ROOT_DIRECTORY + "myFile.xls";
