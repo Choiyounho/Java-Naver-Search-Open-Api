@@ -1,5 +1,7 @@
 package console.domain;
 
+import static utils.CommonsConstant.ROOT_DIRECTORY;
+
 public class ExcelVo {
 
     private String title;
@@ -8,8 +10,7 @@ public class ExcelVo {
     private String isbn;
     private String imageUrl;
 
-    public ExcelVo(String title, String author, String company, String isbn, String imageUrl) {
-        super();
+    private ExcelVo(String title, String author, String company, String isbn, String imageUrl) {
         this.title = title;
         this.author = author;
         this.company = company;
@@ -17,10 +18,24 @@ public class ExcelVo {
         this.imageUrl = imageUrl;
     }
 
-    public ExcelVo(String title, String author, String company) {
+    private ExcelVo(String title, String author, String company) {
         this.title = title;
         this.author = author;
         this.company = company;
+    }
+
+    // 정적 팩토리 메소드
+    public static ExcelVo search(String title, String author, String company) {
+        return new ExcelVo(title, author, company);
+    }
+
+    public static ExcelVo print(String[] cellArr) {
+        String title = cellArr[0];
+        String author = cellArr[1];
+        String company = cellArr[2];
+        String isbn = cellArr[3];
+        String imageUrl = cellArr[4];
+        return new ExcelVo(title, author, company, isbn, imageUrl);
     }
 
     public String getAuthor() {
@@ -44,22 +59,19 @@ public class ExcelVo {
     }
 
     public String getImageUrl() {
-        return "results/" + imageUrl;
+        return ROOT_DIRECTORY + imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
-
     @Override
     public String toString() {
-        return "console.domain.ExcelVo{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", company='" + company + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", imageurl='" + imageUrl + '\'' +
-                '}';
+        return "제목 : '" + title + '\'' +
+                ", 저자 : '" + author + '\'' +
+                ", 출판사 : '" + company + '\'' +
+                ", isbn 번호 : '" + isbn + '\'' +
+                ", 책 이미지 : '" + imageUrl + '\'';
     }
 }

@@ -5,6 +5,8 @@ public class CommonsConstant {
     private CommonsConstant(){
     }
 
+    public static final String ROOT_DIRECTORY = "results/";
+
     public static final int SHEET_WIDTH = 20 * 256;
     public static final short CELL_HEIGHT = 120 * 20;
 
