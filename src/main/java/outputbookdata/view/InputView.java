@@ -1,8 +1,5 @@
 package outputbookdata.view;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import static utils.CommonsConstant.*;
@@ -26,15 +23,14 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public static String inputAddBook() {
-        System.out.println("★대문자로 입력해주세요★");
+    public static String progress() {
         System.out.println("계속입력 하시려면 Y / 입력종료 N" + COLON);
         return scanner.nextLine();
     }
 
     public static String inputStart() {
-        System.out.println("★대문자로 입력해주세요★");
         System.out.print("입력처리(I)/종료(E):");
         return scanner.nextLine();
     }
+
 }

@@ -3,16 +3,18 @@ package outputbookdata.domain;
 import java.io.*;
 import java.net.URL;
 
+import static utils.CommonsConstant.ROOT_DIRECTORY;
+
 public class DownloadBroker implements Runnable {
 
-    public static final String DOWNLOAD_COMPLETE = "download complete...";
+    private static final String DOWNLOAD_COMPLETE = "download complete...";
 
     private String address;
     private String fileName;
 
     public DownloadBroker(String address, String fileName) {
         this.address = address;
-        this.fileName = "results/" + fileName;
+        this.fileName = ROOT_DIRECTORY + fileName;
     }
 
     @Override
@@ -21,8 +23,7 @@ public class DownloadBroker implements Runnable {
             FileOutputStream fileOutputStream = new FileOutputStream(fileName);
             BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
 
-            URL url = new URL(address);
-            InputStream inputStream = url.openStream();
+            InputStream inputStream = new URL(address).openStream();
             BufferedInputStream input = new BufferedInputStream(inputStream);
 
             int data;
@@ -39,4 +40,5 @@ public class DownloadBroker implements Runnable {
             System.out.println("Exception e " + e.getMessage());
         }
     }
+
 }
