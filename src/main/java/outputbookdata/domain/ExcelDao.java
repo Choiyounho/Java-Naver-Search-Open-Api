@@ -7,11 +7,12 @@ import org.apache.poi.util.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import outputbookdata.view.InputView;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -34,31 +35,17 @@ public class ExcelDao {
     }
 
     public void excelInput() {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
         try {
             HSSFSheet firstSheet = workbook.createSheet(SHEETNAME);
-            HSSFRow rowA = firstSheet.createRow(0);
-            HSSFCell cellA = rowA.createCell(0);
-            cellA.setCellValue(new HSSFRichTextString(BOOKNAME));
-            HSSFCell cellB = rowA.createCell(1);
-            cellB.setCellValue(new HSSFRichTextString(AUTHOR));
-            HSSFCell cellC = rowA.createCell(2);
-            cellC.setCellValue(new HSSFRichTextString(COMPANY));
-            HSSFCell cellD = rowA.createCell(3);
-            cellD.setCellValue(new HSSFRichTextString(ISBN));
-            HSSFCell cellE = rowA.createCell(4);
-            cellE.setCellValue(new HSSFRichTextString(IMAGENAME));
-            HSSFCell cellF = rowA.createCell(5);
-            cellF.setCellValue(new HSSFRichTextString(IMAGE));
+            settingsColumn(firstSheet);
 
             int rowNum = 1;
+
             while (true) {
-                System.out.print(BOOKNAME + COLON);
-                String title = bufferedReader.readLine();
-                System.out.print(AUTHOR + COLON);
-                String author = bufferedReader.readLine();
-                System.out.print(COMPANY + COLON);
-                String company = bufferedReader.readLine();
+                String title = InputView.inputBookName();
+                String author = InputView.inputBookAuthor();
+                String company = InputView.inputBookCompany();
 
                 HSSFRow row = firstSheet.createRow(rowNum);
                 HSSFCell cellTitle = row.createCell(0);
@@ -72,16 +59,32 @@ public class ExcelDao {
                 ExcelVo search = ExcelVo.search(title, author, company);
                 ExcelVo data = naverSearch(search);
                 list.add(data);
-                System.out.println("★대문자로 입력해주세요★");
-                System.out.println("계속입력 하시려면 Y / 입력종료 N" + COLON);
-                String key = bufferedReader.readLine();
-                if (key.equals("N")) break;
+                String progressStatus = InputView.inputAddBook();
+                if (progressStatus.equals("N")) {
+                    break;
+                }
             }
             System.out.println("데이터 추출중...........");
             excelSave();
         } catch (Exception e) {
             System.out.println("Exception e " + e.getMessage());
         }
+    }
+
+    private void settingsColumn(HSSFSheet firstSheet) {
+        HSSFRow rowA = firstSheet.createRow(0);
+        HSSFCell cellA = rowA.createCell(0);
+        cellA.setCellValue(new HSSFRichTextString(BOOKNAME));
+        HSSFCell cellB = rowA.createCell(1);
+        cellB.setCellValue(new HSSFRichTextString(AUTHOR));
+        HSSFCell cellC = rowA.createCell(2);
+        cellC.setCellValue(new HSSFRichTextString(COMPANY));
+        HSSFCell cellD = rowA.createCell(3);
+        cellD.setCellValue(new HSSFRichTextString(ISBN));
+        HSSFCell cellE = rowA.createCell(4);
+        cellE.setCellValue(new HSSFRichTextString(IMAGENAME));
+        HSSFCell cellF = rowA.createCell(5);
+        cellF.setCellValue(new HSSFRichTextString(IMAGE));
     }
 
     private ExcelVo naverSearch(ExcelVo vo) {
@@ -158,42 +161,4 @@ public class ExcelDao {
             System.out.println("Exception e " + e.getMessage());
         }
     }
-
-
-//    public static HttpURLConnection requestNaverSearchApi(String openApi) throws IOException {
-//        HttpURLConnection httpConnection;
-//        URL url = new URL(openApi);
-//        httpConnection = (HttpURLConnection) url.openConnection();
-//        httpConnection.setRequestMethod(HTTP_METHOD_GET);
-//        httpConnection.setRequestProperty(NAVER_SEARCH_API_KEY_ID, NAVER_SEARCH_CLIENT_ID);
-//        httpConnection.setRequestProperty(NAVER_SEARCH_API_KEY_SECRET, NAVER_SEARCH_CLIENT_SECRET);
-//        return httpConnection;
-//    }
-//
-//    private static BufferedReader getResponseData(HttpURLConnection httpConnection, int responseCode) throws IOException {
-//        if (responseCode == HTTP_STATE_CODE_200_OK) {
-//            return new BufferedReader(new InputStreamReader(httpConnection.getInputStream(), UTF_8));
-//        }
-//        return new BufferedReader(new InputStreamReader(httpConnection.getErrorStream()));
-//    }
-//
-//    public static StringBuilder getNaverSearchResponse(HttpURLConnection httpConnection) throws IOException {
-//        StringBuilder response;
-//        int responseCode = httpConnection.getResponseCode();
-//        BufferedReader bufferedReader;
-//        bufferedReader = getResponseData(httpConnection, responseCode);
-//        response = findErrorResponse(bufferedReader);
-//        bufferedReader.close();
-//        return response;
-//    }
-//
-//    private static StringBuilder findErrorResponse(BufferedReader bufferedReader) throws IOException {
-//        String inputLine;
-//        StringBuilder response = new StringBuilder();
-//        while ((inputLine = bufferedReader.readLine()) != null) {
-//            response.append(inputLine);
-//        }
-//        return response;
-//    }
-
 }
