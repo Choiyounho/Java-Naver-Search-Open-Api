@@ -13,7 +13,6 @@ import static utils.CommonsConstant.ROOT_DIRECTORY;
 public class PoiApi {
 
     private static final String IMAGE_FILE = ROOT_DIRECTORY + "pic.jpg";
-    private static final String CREATED_FILENAME = ROOT_DIRECTORY + "myFile.xls";
 
     public static int createImageFile(Workbook workbook) throws IOException {
         InputStream inputStream = new FileInputStream(IMAGE_FILE);
@@ -23,8 +22,8 @@ public class PoiApi {
         return pictureIdX;
     }
 
-    public static FileOutputStream excelOutputImage(Workbook workbook) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream(CREATED_FILENAME);
+    public static FileOutputStream excelOutputImage(Workbook workbook, String fileName) throws IOException {
+        FileOutputStream fileOutputStream = new FileOutputStream(fileName);
         workbook.write(fileOutputStream);
         fileOutputStream.close();
         return fileOutputStream;

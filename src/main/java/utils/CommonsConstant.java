@@ -20,7 +20,6 @@ public class CommonsConstant {
     public static final String HTTP_METHOD_GET = "GET";
     public static final String UTF_8 = "UTF-8";
 
-    public static final String TOTAL = "total";
     public static final String ISBN = "isbn";
 
     public static final String BLANK = " ";

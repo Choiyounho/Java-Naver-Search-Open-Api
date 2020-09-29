@@ -11,12 +11,12 @@ import org.apache.poi.ss.usermodel.Workbook;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static utils.CommonsConstant.CELL_HEIGHT;
-import static utils.CommonsConstant.SHEET_WIDTH;
+import static utils.CommonsConstant.*;
 
 public class InputImageController {
 
     private static final String SHEETNAME = "My Sample Excel";
+    private static final String CREATED_FILENAME = ROOT_DIRECTORY + "myFile.xls";
     private static final int CREATED_SHEET_ROW_NUM = 2;
     private static final int CREATED_SHEET_COLUMN_NUM = 1;
     private static final int COLUMN_INDEX = 1;
@@ -39,7 +39,7 @@ public class InputImageController {
 
             cell.getRow().setHeight(CELL_HEIGHT);
 
-            FileOutputStream fileOutputStream = PoiApi.excelOutputImage(workbook);
+            FileOutputStream fileOutputStream = PoiApi.excelOutputImage(workbook, CREATED_FILENAME);
 
             OutputView.response(fileOutputStream);
         } catch (IOException e) {

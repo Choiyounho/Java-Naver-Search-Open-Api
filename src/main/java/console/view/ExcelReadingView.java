@@ -1,6 +1,6 @@
 package console.view;
 
-import console.domain.ExcelVo;
+import console.domain.BookVo;
 import org.apache.poi.ss.usermodel.Cell;
 
 import java.util.Iterator;
@@ -16,7 +16,7 @@ public class ExcelReadingView {
         }
     }
 
-    public static void showExcelData(List<ExcelVo> data) {
+    public static void showExcelData(List<BookVo> data) {
         data.forEach(System.out::println);
     }
 }

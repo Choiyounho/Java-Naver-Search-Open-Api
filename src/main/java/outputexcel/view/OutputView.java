@@ -41,4 +41,5 @@ public class OutputView {
                 .append(cellType)
                 .toString();
     }
+
 }

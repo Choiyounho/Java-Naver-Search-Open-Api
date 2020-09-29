@@ -1,6 +1,6 @@
 package console.controller;
 
-import console.domain.ExcelVo;
+import console.domain.BookVo;
 import console.view.ExcelReadingView;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -21,7 +21,7 @@ public class ExcelController {
     private static final int SHEET_INDEX = 0;
     public static final int EXCEL_COLUMN_COUNT = 5;
 
-    private List<ExcelVo> data;
+    private List<BookVo> data;
 
     public void run() {
         try {
@@ -40,7 +40,7 @@ public class ExcelController {
                 int i = 0;
                 ExcelReadingView.readCell(cells, cellArr, i);
 
-                ExcelVo print = ExcelVo.print(cellArr);
+                BookVo print = BookVo.print(cellArr);
                 data.add(print);
             }
             ExcelReadingView.showExcelData(data);

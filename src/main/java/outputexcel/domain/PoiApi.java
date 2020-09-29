@@ -18,8 +18,7 @@ public class PoiApi {
     public static Iterator<Row> readRowIterator(FileInputStream fileInputStream) throws IOException {
         HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
         HSSFSheet sheet = workbook.getSheetAt(SHEET_INDEX);
-        Iterator<Row> rows = sheet.rowIterator();
-        return rows;
+        return sheet.rowIterator();
     }
 
     public static void readRow(Iterator<Row> rows) {
